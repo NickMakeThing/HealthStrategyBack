@@ -16,6 +16,7 @@ class CreatePosts(CreateAPIView):
 class GetAllBlogPosts(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
+    # need to add pagination for when too many posts accumulate
 
 class GetBlogPost(RetrieveAPIView):
     pass

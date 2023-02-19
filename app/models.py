@@ -8,4 +8,4 @@ class Post(models.Model):
     thumbnail = models.CharField(unique=True, max_length=255)
     main_image = models.CharField(unique=True, max_length=255)
     description = models.CharField(max_length=512)
-    content = ArrayField(models.TextField())
+    content = ArrayField(models.JSONField())
