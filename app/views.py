@@ -1,25 +1,21 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from app.models import Post
+from app.models import BlogPost
 from rest_framework.generics import ListAPIView, RetrieveAPIView , CreateAPIView
-from .serializers import CreatePostsSerializer, PostListSerializer
+from .serializers import CreatePostsSerializer, GetListSerializer, GetDetailSerializer
 
-# class AuthorCreateView(CreateView):
-#     model = Post
-#     fields = ['title','date','thumbnail','main_image','content']
-#     # for content, it will be a dict that is turned into json with
-#     # type, content
 class CreatePosts(CreateAPIView):
-    queryset = Post.objects.all()
+    queryset = BlogPost.objects.all()
     serializer_class = CreatePostsSerializer
     
 class GetAllBlogPosts(ListAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostListSerializer
+    queryset = BlogPost.objects.all()
+    serializer_class = GetListSerializer
     # need to add pagination for when too many posts accumulate
 
 class GetBlogPost(RetrieveAPIView):
-    pass
+    queryset = BlogPost.objects.all()
+    serializer_class = GetDetailSerializer
+    lookup_field = 'title'
 
 
 # class HomeView(TemplateView):

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app.views import CreatePosts, GetAllBlogPosts
+from app.views import CreatePosts, GetAllBlogPosts, GetBlogPost
 # from rest_framework import routers
 
 # router = routers.SimpleRouter()
@@ -24,6 +24,7 @@ from app.views import CreatePosts, GetAllBlogPosts
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('make', CreatePosts.as_view()),
+    path('get/<str:title>/', GetBlogPost.as_view()),
     path('getall', GetAllBlogPosts.as_view())
 ]
 

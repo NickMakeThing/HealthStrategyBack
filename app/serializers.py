@@ -3,12 +3,18 @@ from app import models
 
 class CreatePostsSerializer(ModelSerializer):
     class Meta:
-        model = models.Post
+        model = models.BlogPost
         fields = [
             'title','thumbnail','main_image','description','content'
         ]
 
-class PostListSerializer(ModelSerializer):
+class GetListSerializer(ModelSerializer):
     class Meta:
-        model = models.Post
+        model = models.BlogPost
+        fields = ('__all__')
+
+    
+class GetDetailSerializer(ModelSerializer):
+    class Meta:
+        model = models.BlogPost
         fields = ('__all__')
