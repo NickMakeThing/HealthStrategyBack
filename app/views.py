@@ -17,6 +17,12 @@ class GetBlogPost(RetrieveAPIView):
     serializer_class = GetDetailSerializer
     lookup_field = 'title'
 
+class SearchBlogPosts(ListAPIView):
+    serializer_class = GetListSerializer
+    def get_queryset(self):
+        search_term = self.request.GET.get('search')
+        if search_term:
+            return BlogPost.objects.filter(title__contains = search_term)
 
 # class HomeView(TemplateView):
 #     pass
